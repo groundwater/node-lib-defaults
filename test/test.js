@@ -1,7 +1,7 @@
 var test = require('tap').test
 var mock = require('nodemock')
 
-test("user overrides base case", function(t){
+test("copy overrides base case", function(t){
   var Defaults = require('../index.js')({
     NewConfig: {
       value: function(){
@@ -11,21 +11,21 @@ test("user overrides base case", function(t){
     fs: {
       value: mock.mock('readFileSync')
         .mock('readFileSync').takes('/base/test.json').returns('{"x":"base"}')
-        .mock('readFileSync').takes('/user/test.json').returns('{"x":"user"}')
+        .mock('readFileSync').takes('/copy/test.json').returns('{"x":"copy"}')
     }
   })
 
   var base = '/base/'
-  var user = '/user/'
+  var copy = '/copy/'
 
   var def = Defaults.New()
 
-  def.setUserDir(user)
+  def.setCopyDir(copy)
   def.setBaseDir(base)
 
   var conf = def.getConfig('test')
 
-  t.equals(conf.get('x'), 'user')
+  t.equals(conf.get('x'), 'copy')
 
   t.end()
 })
@@ -40,16 +40,16 @@ test("base case is default", function(t){
     fs: {
       value: mock.mock('readFileSync')
         .mock('readFileSync').takes('/base/test.json').returns('{"x":"base"}')
-        .mock('readFileSync').takes('/user/test.json').returns('{}')
+        .mock('readFileSync').takes('/copy/test.json').returns('{}')
     }
   })
 
   var base = '/base/'
-  var user = '/user/'
+  var copy = '/copy/'
 
   var def = Defaults.New()
 
-  def.setUserDir(user)
+  def.setCopyDir(copy)
   def.setBaseDir(base)
 
   var conf = def.getConfig('test')
@@ -72,11 +72,11 @@ test("nonexistent file throws gracefully", function(t){
   })
 
   var base = '/base/'
-  var user = '/user/'
+  var copy = '/copy/'
 
   var def = Defaults.New()
 
-  def.setUserDir(user)
+  def.setCopyDir(copy)
   def.setBaseDir(base)
 
   var conf = def.getConfig('test')

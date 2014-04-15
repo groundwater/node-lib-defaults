@@ -11,7 +11,7 @@ Defaults.prototype.setBaseDir = function (base) {
   this.base = base;
 };
 
-Defaults.prototype.setUserDir = function (copy) {
+Defaults.prototype.setCopyDir = function (copy) {
   this.copy = copy;
 };
 
@@ -31,7 +31,7 @@ Defaults.NewEmpty = function( ){
   return Object.defineProperty(new Defaults(), '$', {value: this});
 };
 
-Defaults.New = function (global, user) {
+Defaults.New = function (global, copy) {
   var def = this.NewEmpty();
 
   return def;
