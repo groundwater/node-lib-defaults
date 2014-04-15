@@ -1,7 +1,7 @@
 {
   "name": "lib-defaults",
   "version": "0.0.0",
-  "description": "",
+  "description": "config defaults",
   "main": "index.js",
   "scripts": {
     "test": "jshint index.js && tap test"
@@ -14,6 +14,18 @@
   },
   "devDependencies": {
     "tap": "^0.4.8",
-    "nodemock": "^0.3.3"
-  }
+    "nodemock": "^0.3.3",
+    "jshint": "^2.5.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/groundwater/node-lib-defaults.git"
+  },
+  "bugs": {
+    "url": "https://github.com/groundwater/node-lib-defaults/issues"
+  },
+  "homepage": "https://github.com/groundwater/node-lib-defaults"
 }
