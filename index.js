@@ -21,10 +21,14 @@ Defaults.prototype.getConfig = function (name) {
   var base = join(this.base, name + '.json');
   var copy = join(this.copy, name + '.json');
 
-  config.load(graceful(base, this.$.fs.readFileSync));
-  config.load(graceful(copy, this.$.fs.readFileSync));
+  config.push(graceful(base, this.$.fs.readFileSync));
+  config.push(graceful(copy, this.$.fs.readFileSync));
 
   return config;
+};
+
+Defaults.prototype.setConfig = function (name, config) {
+  //
 };
 
 Defaults.NewEmpty = function( ){
@@ -52,12 +56,12 @@ function inject(deps) {
 }
 
 function defaults() {
-  var Config = require('lib-config');
+  var Union = require('lib-union')();
 
   return {
     NewConfig: {
       value: function(){
-        return new Config();
+        return Union.New();
       }
     },
     fs: {

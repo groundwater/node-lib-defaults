@@ -5,7 +5,7 @@ test("copy overrides base case", function(t){
   var Defaults = require('../index.js')({
     NewConfig: {
       value: function(){
-        return new (require('lib-config'))
+        return require('lib-union')().New()
       }
     },
     fs: {
@@ -34,7 +34,7 @@ test("base case is default", function(t){
   var Defaults = require('../index.js')({
     NewConfig: {
       value: function(){
-        return new (require('lib-config'))
+        return require('lib-union')().New()
       }
     },
     fs: {
@@ -63,7 +63,7 @@ test("nonexistent file throws gracefully", function(t){
   var Defaults = require('../index.js')({
     NewConfig: {
       value: function(){
-        return new (require('lib-config'))
+        return require('lib-union')().New()
       }
     },
     fs: {
