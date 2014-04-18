@@ -23,7 +23,7 @@ test("copy overrides base case", function(t){
   def.setCopyDir(copy)
   def.setBaseDir(base)
 
-  var conf = def.getConfig('test')
+  var conf = def.getConfigSync('test')
 
   t.equals(conf.get('x'), 'copy')
 
@@ -52,7 +52,7 @@ test("base case is default", function(t){
   def.setCopyDir(copy)
   def.setBaseDir(base)
 
-  var conf = def.getConfig('test')
+  var conf = def.getConfigSync('test')
 
   t.equals(conf.get('x'), 'base')
 
@@ -79,7 +79,7 @@ test("nonexistent file throws gracefully", function(t){
   def.setCopyDir(copy)
   def.setBaseDir(base)
 
-  var conf = def.getConfig('test')
+  var conf = def.getConfigSync('test')
 
   t.equals(conf.get('x'), undefined)
 

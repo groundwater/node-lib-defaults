@@ -15,7 +15,7 @@ Defaults.prototype.setCopyDir = function (copy) {
   this.copy = copy;
 };
 
-Defaults.prototype.getConfig = function (name) {
+Defaults.prototype.getConfigSync = function (name) {
   var config = this.$.NewConfig();
 
   var base = join(this.base, name + '.json');
@@ -27,8 +27,9 @@ Defaults.prototype.getConfig = function (name) {
   return config;
 };
 
-Defaults.prototype.setConfig = function (name, config) {
-  //
+Defaults.prototype.setConfigSync = function (name, config) {
+  this.$.fs.writeFileSync(join(this.copy, name + '.json'),
+    JSON.stringify(config.stack));
 };
 
 Defaults.NewEmpty = function( ){
