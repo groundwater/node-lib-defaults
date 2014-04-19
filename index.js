@@ -3,8 +3,8 @@
 var join = require('path').join;
 
 function Defaults() {
-  this.base = null;
-  this.copy = null;
+  this.base = '.';
+  this.copy = '.';
 }
 
 Defaults.prototype.setBaseDir = function (base) {
